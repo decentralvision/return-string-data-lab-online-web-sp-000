@@ -9,7 +9,13 @@ $(function () {
       // Replace text of body-id div
       $("#description-" + id).text(data);
     });
-
+    $.get("/products/" + id + "/inventory", function(data) {
+      if (data == "true") {
+        $("#inventory-" + id).text("Available");
+      } else {
+        $("#inventory-" + id).text("Sold Out");
+      }
+    });
   });
 });
 </script>
