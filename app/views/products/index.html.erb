@@ -1,4 +1,18 @@
 <% @products.each do |product| %>
-<%= product.name %> <br>
-<%= truncate product.description.%>
+    <%= render partial: "product", locals: {product: product} %>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-more").on('click', function() {
+    let id = $(this).data("id");
+    $.get("/products/" + id + "/description", function(data) {
+      // Replace text of body-id div
+      $("#description-" + id).text(data);
+    });
+    $.get("/products/" + id + "/inventory", function(data) {
+      $("#inventory-" + id).text("In Stock: " + data);
+    });
+    debugger;
+  });
+});
+</script>
