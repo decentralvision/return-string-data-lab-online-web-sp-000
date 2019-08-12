@@ -9,10 +9,7 @@ $(function () {
       // Replace text of body-id div
       $("#description-" + id).text(data);
     });
-    $.get("/products/" + id + "/inventory", function(data) {
-      $("#inventory-" + id).text("In Stock: " + data);
-    });
-    debugger;
+
   });
 });
 </script>
